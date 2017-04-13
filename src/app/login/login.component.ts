@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'login',
