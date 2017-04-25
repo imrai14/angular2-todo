@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector : 'app-footer',
-    template : `<div style="position : fixed; width : 100%;bottom : 0px;">This is bottom footer</div>`
+    template : `<div class="common-footer-blk">This is bottom footer</div>`
 })
 
 export class FooterComponent {
