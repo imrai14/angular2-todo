@@ -1,6 +1,11 @@
+<app-header></app-header>
 <div class="container text-center">
   <h1>
     {{title}}
+    <button type="button" class="btn-primary" [routerLink]="['login']">login</button>
   </h1>
-  <login></login>
 </div>
+<div>
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

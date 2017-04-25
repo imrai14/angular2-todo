@@ -1,8 +1,7 @@
 <div>
-    <form novalidate [formGroup] = "myControl">
+    <form novalidate>
         <input type="text" name="uname" value="">
         <input type="text" name="password" value="">
-        <button type="submit">Login</button>
+        <button type="button" (click)="goToNextPage()">Login</button>
     </form>
-
 </div>
