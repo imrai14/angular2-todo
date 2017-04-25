@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
                 <a class='navbar-brand'>{{pageTitle}}</a>
                 <ul class='nav navbar-nav'>
                     <li><a [routerLink]="['/login']">Login</a></li>
-                    <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                    <li><a [routerLink]="['/register']">Register</a></li>
                 </ul>
             </div>
         </nav>

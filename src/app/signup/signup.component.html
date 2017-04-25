@@ -1,0 +1,26 @@
+<div class="col-md-6 col-md-offset-3">
+    <form [formGroup]="signUpForm" (submit)="register()">
+        <div class="has-error">{{errorMsg}}</div>
+    <div class="form-group">
+      <label for="email">Name</label>
+      <input type="text" class="form-control" formControlName="name" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Email</label>
+      <input type="text" class="form-control" formControlName="email" id="pwd" placeholder="Enter password">
+    </div>
+    <div class="form-group">
+      <label for="email">Phone Number</label>
+      <input type="text" class="form-control" formControlName="phone" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" formControlName="pass" id="pwd" placeholder="Enter password">
+    </div>
+    <div class="form-group">
+      <label for="email">Confirm Password</label>
+      <input type="password" class="form-control" formControlName="cpass" id="email" placeholder="Enter email">
+    </div>
+    <button type="submit" class="btn btn-default">Sign-Up</button>
+  </form>
+</div>
