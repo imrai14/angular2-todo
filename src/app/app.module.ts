@@ -19,7 +19,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([{ path: '', redirectTo: '/', pathMatch: 'full' },
+      { path: '**', redirectTo: '/', pathMatch: 'full' }]),
     DashboardModule,
     LoginModule
   ],
