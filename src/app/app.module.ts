@@ -10,17 +10,19 @@ import { FooterComponent } from './layout/footer.component'
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { WelcomeComponent } from './welcome/welcome.component'
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, FooterComponent
+    AppComponent, HeaderComponent, FooterComponent, WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([{ path: '', redirectTo: '/', pathMatch: 'full' },
-      { path: '**', redirectTo: '/', pathMatch: 'full' }]),
+    RouterModule.forRoot([{ path: 'welcome', component: WelcomeComponent },
+    { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }]),
     DashboardModule,
     LoginModule
   ],
