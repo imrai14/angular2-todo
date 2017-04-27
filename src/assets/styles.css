@@ -27,3 +27,33 @@ body{
 .has-error{
     color: red;
 }
+
+table{
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody {
+    display:block;
+    max-height:200px;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+thead {
+    border: 1px solid #ddd;
+    /*width: calc( 100% - 1em )*/
+}
+
+thead tr td{
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+tbody tr td{
+    word-break: break-word;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+

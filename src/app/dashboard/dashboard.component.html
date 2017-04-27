@@ -1,3 +1,26 @@
-<p>
-  Welcome To Dashboard
-</p>
+<div class="container">
+    <h3>Table A</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>phone</td>
+                <td>Name</td>
+                <td>phone</td>
+                <td>Name</td>
+                <td>phone</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let product of dummyJSON'>
+                <td>{{product._id}}</td>
+                <td>{{product.picture}}</td>
+                <td>{{product.isActive}}</td>
+                <td>dummy</td>
+                <td>{{product.guid}}</td>
+                <td>{{product.balance}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+</div>
