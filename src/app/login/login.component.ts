@@ -16,12 +16,6 @@ export class LoginComponent {
         password : new FormControl()
     });
     constructor(private _router : Router, private fb: FormBuilder, private fbl: FacebookService){
-        let initParams: InitParams = {
-            appId: '128971200982876',
-            xfbml: true,
-            version: 'v2.8'
-        };
-        fbl.init(initParams);
         this.createForm();
         
     }
@@ -32,6 +26,7 @@ export class LoginComponent {
             console.log(response);
             if(response.status == 'connected'){
                 this._router.navigate(['dashboard']);
+                localStorage.setItem('fbt',response.authResponse.accessToken)
             }
         })
         .catch((error: any) => console.error(error));
