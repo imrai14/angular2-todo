@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule, FormControl, FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; 
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FacebookService, InitParams } from 'ngx-facebook';
 
 @Component({
     selector: 'login',
-    templateUrl: './login.component.html'
+    templateUrl: './login.component.html',
+    styleUrls : [ './login.component.css' ]
 })
 export class LoginComponent {
     errorMsg : string;
@@ -13,9 +15,27 @@ export class LoginComponent {
         email: new FormControl(),
         password : new FormControl()
     });
-    constructor(private _router : Router, private fb: FormBuilder){
+    constructor(private _router : Router, private fb: FormBuilder, private fbl: FacebookService){
+        let initParams: InitParams = {
+            appId: '128971200982876',
+            xfbml: true,
+            version: 'v2.8'
+        };
+        fbl.init(initParams);
         this.createForm();
         
+    }
+
+    loginWithFacebook(): void {
+        this.fbl.login()
+        .then((response) => {
+            console.log(response);
+            if(response.status == 'connected'){
+                this._router.navigate(['dashboard']);
+            }
+        })
+        .catch((error: any) => console.error(error));
+    
     }
 
      createForm() {
@@ -30,6 +50,10 @@ export class LoginComponent {
     ngOnInit() {
         console.log('in ng init');
         this.myControl = new FormControl('Todd Motto');
+
+        // FB.getLoginStatus(function(response) {
+        //     statusChangeCallback(response);
+        // });
     }
 
     login() {

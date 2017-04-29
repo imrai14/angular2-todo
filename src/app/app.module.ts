@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FacebookModule } from 'ngx-facebook';
 import { LoginModule} from './login/login.module'
 import { HeaderComponent } from './layout/header.component'
 import { FooterComponent } from './layout/footer.component'
@@ -25,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
     HttpModule,
     ReactiveFormsModule,
     SharedModule,
+    FacebookModule.forRoot(),
     RouterModule.forRoot([{ path: 'welcome', component: WelcomeComponent },
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }]),
