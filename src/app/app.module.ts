@@ -15,6 +15,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SignupModule } from './signup/signup.module';
 import { SharedModule } from './shared/shared.module';
+import { SharedServiceService } from './shared-services/shared-service.service'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { SharedModule } from './shared/shared.module';
     LoginModule,
     SignupModule
   ],
-  providers: [],
+  providers: [SharedServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

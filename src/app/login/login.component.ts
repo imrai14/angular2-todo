@@ -3,11 +3,13 @@ import { FormsModule, FormControl, FormGroup, FormBuilder, ReactiveFormsModule, 
 import { Router } from '@angular/router'; 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FacebookService, InitParams } from 'ngx-facebook';
+import { SharedServiceService } from '../shared-services/shared-service.service'
 
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
-    styleUrls : [ './login.component.css' ]
+    styleUrls : [ './login.component.css' ],
+    providers : [SharedServiceService]
 })
 export class LoginComponent {
     errorMsg : string;
@@ -15,7 +17,7 @@ export class LoginComponent {
         email: new FormControl(),
         password : new FormControl()
     });
-    constructor(private _router : Router, private fb: FormBuilder, private fbl: FacebookService){
+    constructor(private _router : Router, private fb: FormBuilder, private fbl: FacebookService, private _sharedService : SharedServiceService){
         this.createForm();
         
     }
@@ -25,6 +27,7 @@ export class LoginComponent {
         .then((response) => {
             console.log(response);
             if(response.status == 'connected'){
+                this._sharedService.userLogin(true);
                 this._router.navigate(['dashboard']);
                 localStorage.setItem('fbt',response.authResponse.accessToken)
             }
@@ -53,6 +56,7 @@ export class LoginComponent {
 
     login() {
         if(this.loginForm.get('email').value == 'qqq' && this.loginForm.get('password').value == 'qqq'){
+            this._sharedService.userLogin(true);
             this._router.navigate(['dashboard']);
             console.log('right')
         }else{
