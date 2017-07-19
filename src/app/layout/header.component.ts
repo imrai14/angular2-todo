@@ -12,7 +12,7 @@ import { SharedServiceService } from '../shared-services/shared-service.service'
             <div class='container-fluid'>
                 <a class='navbar-brand'>{{pageTitle}}</a>
                 <ul class='nav navbar-nav'>
-                    <li><a [routerLink]="['/login']">Login - {{_sharedService.userLoggedIn}}</a></li>
+                    <li><a [routerLink]="['/login']">Login - {{showLogout}}</a></li>
                     <li><a [routerLink]="['/register']">Register</a></li>
                 </ul>
                 <ul class='nav navbar-nav pull-right'>
@@ -24,8 +24,14 @@ import { SharedServiceService } from '../shared-services/shared-service.service'
 })
 
 export class HeaderComponent {
+    showLogout : boolean;
     constructor(private fb: FacebookService, private _route : Router, private _sharedService : SharedServiceService){
-
+    this._sharedService.userUpdated$.subscribe(
+        value => {
+            console.log("value-->",value)
+            this.showLogout = value;
+        }
+    );
     }
     ngOnInit() {
         console.log('in ng init');
@@ -33,14 +39,17 @@ export class HeaderComponent {
 
     logout(){
         console.log('logout');
-        let hi = this._sharedService.userLogin(false);
-        console.log("hey",hi)
-        this.fb.logout().then(() => {
-            localStorage.clear();
-            this._sharedService.userLogin(false);
+        this._sharedService.announceUserUpdate(false);
+        if(localStorage.getItem('fbt')){
+            this.fb.logout().then(() => {
+                localStorage.clear();
+                this._sharedService.userLogin(false);
+                this._route.navigate(['/']);
+                console.log('Logged out!')
+            });
+        } else{
             this._route.navigate(['/']);
-            console.log('Logged out!')
-        });
+        }
     }
 
 }

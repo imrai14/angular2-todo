@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Subject }    from 'rxjs/Subject';
 
 @Injectable()
 export class SharedServiceService {
 
   constructor() { }
-
+  private userUpdated = new Subject<boolean>();
+	userUpdated$ = this.userUpdated.asObservable();
   userLoggedIn : boolean = false;
 
-  // userLogin(value){
-  //   console.log("value",value)
-  //   // return value
-    
-  //   // this.userLoggedIn = value;
-  // }
+  announceUserUpdate(value){
+    // debugger
+    console.log('this is called')
+    console.log(value)
+		this.userUpdated.next(value);
+	}
 
   userLogin(value){
     // console.log("value",value)

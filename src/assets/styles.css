@@ -57,4 +57,13 @@ tbody tr td{
     border-right: 1px solid #ddd;
 }
 
+.left-icon{
+    background-image: url("images/left.png");
+    background-size: 40px;
+    background-repeat: no-repeat;
+
+
+    
+}
+
 

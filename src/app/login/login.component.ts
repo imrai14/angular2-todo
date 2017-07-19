@@ -33,7 +33,6 @@ export class LoginComponent {
             }
         })
         .catch((error: any) => console.error(error));
-    
     }
 
      createForm() {
@@ -54,9 +53,11 @@ export class LoginComponent {
         // });
     }
 
+    
+
     login() {
         if(this.loginForm.get('email').value == 'qqq' && this.loginForm.get('password').value == 'qqq'){
-            this._sharedService.userLogin(true);
+            this._sharedService.announceUserUpdate(true);
             this._router.navigate(['dashboard']);
             console.log('right')
         }else{
